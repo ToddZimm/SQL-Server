@@ -1,4 +1,5 @@
 -- Returns partitioned table statistics
+DECLARE @table_name nvarchar(128) = 'table_name';
 
 SELECT PartitionScheme AS [Partition Scheme Name],
        PartitionFunction AS [Partition Function Name],
@@ -16,7 +17,7 @@ FROM
     left join sys.partition_range_values prv on prv.function_id = pf.function_id AND prv.boundary_id = p.partition_number
     join sys.allocation_units au  ON au.container_id = p.hobt_id  
     join sys.filegroups fg  ON fg.data_space_id = au.data_space_id 
-    where i.object_id = object_id('dbo.EncounterFact')) a
+    where i.object_id = object_id(@table_name)) a
 join sys.sysfiles sf ON a.data_space_id=sf.groupid
 GROUP BY PartitionScheme,PartitionFunction,FileGroupName,rows,PartitionFunctionValue
-ORDER BY PartitionFunctionValue
+ORDER BY PartitionFunctionValue;
