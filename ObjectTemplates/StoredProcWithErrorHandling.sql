@@ -31,3 +31,8 @@ BEGIN
 END;
 GO
 
+/**********************************************************************************************************
+References:
+https://www.sommarskog.se/error_handling/Part1.html#jumpgeneralpattern
+https://www.brentozar.com/archive/2022/01/error-handling-quiz-week-making-a-turkey-sandwich-with-xact_abort/
+***********************************************************************************************************/
